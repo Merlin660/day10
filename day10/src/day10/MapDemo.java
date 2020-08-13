@@ -48,6 +48,15 @@ public class MapDemo {
 		
 	}
 	
+	@Test
+	public void demo4() {
+		Map<String, String> map = createMap();
+		String name = map.get("1");
+		System.out.println(name);
+		
+
+	}
+	
 	
 	public Map<String, String> createMap() {
 		Map<String, String> map = new HashMap<String, String>();
