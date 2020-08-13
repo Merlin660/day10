@@ -3,28 +3,37 @@ package day09.practice;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * 	随机抽奖
+ * @author Administrator
+ *
+ */
 public class Demo {
-	
+
 	public static void main(String[] args) {
 		
-		ArrayList<String> person = new ArrayList<String>();
-		for (int i = 0; i < 10; i++) {
-			person.add("张三");
+		// 1.抽奖的人
+		ArrayList<String> persons = new ArrayList<String>();
+		for(int i=0; i<10; i++) {
+			persons.add("张三" + i);
 		}
 		
 		Random random = new Random();
-		ArrayList<String> list = new ArrayList<String>();
+		ArrayList<String> list = new ArrayList<String>(); // 抽过奖的人
 		
-		int next = random.nextInt(person.size());
-		boolean isContains = list.contains(person.get(next));
-		
-		if (!isContains) {
-			System.out.println("中奖的人是：" + person.get(next));
+		for(int i=0; i<persons.size(); i++) {
+			// 抽奖一次
+			while(true) {
+				int next = random.nextInt(persons.size());
+				String nextPerson = persons.get(next);// 下一个要抽奖的人
+				if (!list.contains(nextPerson)) {
+					System.out.println("中奖的是：" + nextPerson);
+					list.add(nextPerson);
+					break;
+				}
+			}
 		}
-		
-		list.add(person.get(next));
-		
-		
 	}
-
+	
+	
 }
